@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserCoachMapper">
+	<select id="getCoaches" resultType="entity.UserCoach">
+		select
+			coach_id as coachId,
+			coach_name as coachName,
+			coach_age as coachAge,
+			coach_gender as coachGender,
+			coach_birthday as coachBirthday,
+			coach_address as coachAddress,
+			coach_contact as coachContact,
+			coach_icard as coachIcard,
+			coach_wechat as coachWechat,
+			begin_time as beginTime
+		from
+			user_coach
+	</select>
+	<select id="getCoachById" parameterType="java.lang.Integer" resultType="entity.UserCoach">
+		select
+			coach_id as coachId,
+			coach_name as coachName,
+			coach_age as coachAge,
+			coach_gender as coachGender,
+			coach_birthday as coachBirthday,
+			coach_address as coachAddress,
+			coach_contact as coachContact,
+			coach_icard as coachIcard,
+			coach_wechat as coachWechat,
+			begin_time as beginTime
+		from user_coach
+			where coach_id=#{coachId}
+	</select>
+	<insert id="insertCoach" parameterType="entity.UserCoach">
+		insert into user_coach(
+			coach_name,
+			coach_age,
+			coach_gender,
+			coach_birthday,
+			coach_address,
+			coach_contact,
+			coach_icard,
+			coach_wechat,
+			begin_time
+		)values(
+			#{coachName},#{coachAge},#{coachGender},#{coachBirthday},#{coachAddress},#{coachContact},#{coachIcard},#{coachWechat},#{beginTime}
+		)
+	</insert>
+	<update id="updateCoach" parameterType="entity.UserCoach">
+		update user_coach
+			set
+			coach_name =#{coachName},
+			coach_age =#{coachAge},
+			coach_gender =#{coachGender},
+			coach_birthday =#{coachBirthday},
+			coach_address =#{coachAddress},
+			coach_contact =#{coachContact},
+			coach_icard =#{coachIcard},
+			coach_wechat =#{coachWechat},
+			begin_time =#{beginTime}
+		where coach_id=#{coachId}
+	</update>
+</mapper>

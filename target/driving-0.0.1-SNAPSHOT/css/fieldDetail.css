@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+#detailTable{
+	width:80%;
+	background-color: #DDDDDD;
+}
+body{
+	padding:30px;
+}
+.detailTableTd{
+	width:16.67%;
+	border:medium 1px;
+	text-align:center;
+}
+#detailH1{
+	width:80%;
+	text-align: center;
+}

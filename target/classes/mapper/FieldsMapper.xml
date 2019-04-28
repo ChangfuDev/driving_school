@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.FieldsMapper">
+	<select id="getField1Status" resultType="java.lang.Integer">
+		select count(*) from
+		field1 where field_status=1
+	</select>
+	<select id="getField2Status" resultType="java.lang.Integer">
+		select count(*) from
+		field2 where field_status=1
+	</select>
+	<select id="getField3Status" resultType="java.lang.Integer">
+		select count(*) from
+		field3
+	</select>
+	<select id="getField4Status" resultType="java.lang.Integer">
+		select count(*) from
+		field4 where field_status=1
+	</select>
+	<select id="getField1Detail" resultType="entity.Field1">
+		select
+		field_id as fieldId,
+		field_status as fieldStatus,
+		coach_id as coachId,
+		start_time as startTime,
+		finish_time as finishTime
+		from field1
+	</select>
+	<select id="getField2Detail" resultType="entity.Field2">
+		select
+		field_id as
+		fieldId,
+		field_status as fieldStatus,
+		coach_id as coachId,
+		start_time as
+		startTime,
+		finish_time as finishTime
+		from field2
+	</select>
+	<select id="getField3Detail" resultType="entity.Field3">
+		select
+			field_id as fieldId,
+			field_section as fieldSection,
+			coach_id as coachId,
+			start_time as startTime,
+			finish_time as finishTime
+		from field3
+	</select>
+	<select id="getField4Detail" resultType="entity.Field4">
+		select
+			field_id as fieldId,
+			field_status as fieldStatus,
+			coach_id as coachId,
+			start_time as startTime,
+			finish_time as finishTime
+		from field4
+	</select>
+	<update id="changeField1" parameterType="entity.Field1">
+		update field1
+			set
+				field_status=#{fieldStatus},
+				coach_id=#{coachId},
+				start_time=#{startTime},
+				finish_time=#{finishTime}
+			where
+				field_id=#{fieldId}
+	</update>
+	<update id="changeField2" parameterType="entity.Field2">
+		update field2
+			set
+				field_status=#{fieldStatus},
+				coach_id=#{coachId},
+				start_time=#{startTime},
+				finish_time=#{finishTime}
+			where
+				field_id=#{fieldId}
+	</update>
+	<update id="changeField3" parameterType="entity.Field3">
+		update field3
+			set
+				field_section=#{fieldSection},
+				coach_id=#{coachId},
+				start_time=#{startTime},
+				finish_time=#{finishTime}
+			where
+				field_id=#{fieldId}
+	</update>
+	<update id="changeField4" parameterType="entity.Field4">
+		update field4
+			set
+				field_status=#{fieldStatus},
+				coach_id=#{coachId},
+				start_time=#{startTime},
+				finish_time=#{finishTime}
+			where
+				field_id=#{fieldId}
+	</update>
+	<insert id="addField3" parameterType="entity.Field3">
+			INSERT INTO field3 ( 
+				field_section, 
+				coach_id, 
+				start_time, 
+				finish_time
+				) 
+			VALUES ( 
+				#{fieldSection}, 
+				#{coachId}, 
+				#{startTime}, 
+				#{finishTime}
+				)
+	</insert>
+	<delete id="deleteField3" parameterType="java.lang.Integer">
+		delete from
+			field3
+		where
+			field_id=#{fieldId}
+	</delete>
+</mapper>

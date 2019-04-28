@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.DeviceMapper">
+<select id="getDevices" resultType="entity.Device">
+	select
+		dev_id as devId,
+		dev_name as devName,
+		dev_price as devPrice
+	from devices
+</select>
+<select id="checkStore" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+	select dev_count from dev_store where dev_id=#{devId}
+</select>
+<update id="updateStore">
+	update dev_store
+		set dev_count=dev_count+#{changeCount}
+	where dev_id=#{devId}
+</update>
+<select id="getAllDevStore" resultType="entity.DevStore">
+	select devices.dev_id as devId,
+		devices.dev_name as devName,
+		dev_count as count,
+		dev_price as price
+	from devices,dev_store
+		where devices.dev_id=dev_store.dev_id
+</select>
+</mapper>

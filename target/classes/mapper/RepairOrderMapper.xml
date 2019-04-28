@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.RepairOrderMapper">
+<select id="getRepairOrderById" parameterType="java.lang.Integer" resultType="entity.RepairOrder">
+	select
+		rep_id as repId,
+		car_id as carId,
+		dev_id as devId,
+		rep_name as repName,
+		rep_location as repLocation,
+		rep_time as repTime
+	from repair_order
+		where
+		car_id=#{carId}
+</select>
+<select id="getRepairOrderNumById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+	select count(*)
+		from repair_order
+		where
+		car_id=#{carId}
+</select>
+<insert id="addNewRepairOrder" parameterType="entity.RepairOrder">
+	insert into repair_order(
+		car_id,dev_id,rep_name,rep_location,rep_time
+	)
+	values(
+		#{carId},#{devId},#{repName},#{repLocation},#{repTime}
+	)
+</insert>
+</mapper>

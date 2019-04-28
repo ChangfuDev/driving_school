@@ -1,0 +1,54 @@
+@charset "UTF-8";
+#homePageImg {
+	width: 30px;
+}
+
+#navALab {
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+}
+
+#navTitle {
+	line-height: 30px;
+	text-align: center;
+	width: 95%;
+	display: inline-block;
+	font-size: 28px;
+}
+#userListTable{
+	width:100%;
+	margin-top:30px;
+	background-color: #F9F9F9;
+	border-collapse: collapse;
+	text-align: center;
+}
+#userListTable tr:hover{
+	cursor:pointer;
+	background-color: #F2F2F2;
+}
+#userListTable th{
+	border:solid 3px;
+}
+#userListTable td{
+	border:solid 1px;
+}
+#backPageImg {
+	width: 10px;
+}
+#learnerDetailTable{
+	width:100%;
+	border-collapse: collapse;
+	text-align: center;
+}
+#coachDetailTable{
+	width:100%;
+	border-collapse: collapse;
+	text-align: center;
+}
+#learnerDetailTable td{
+	border:solid 1px;
+}
+#coachDetailTable td{
+	border:solid 1px;
+}

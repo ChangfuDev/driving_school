@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.FinanceMapper">
+<select id="getAllFinance" resultType="entity.Finance">
+	select
+		finan_id as finanId,
+		reim_person as reimPerson,
+		finan_amount as finanAmount,
+		finan_descri as finanDescri,
+		finan_date as finanDate
+	from finance
+</select>
+<delete id="deleteFinanceById" parameterType="java.lang.Integer">
+delete from finance
+where finan_id=#{finanId}
+</delete>
+<insert id="addNewFinance" parameterType="entity.Finance">
+	insert into finance(
+		reim_person,finan_amount,finan_descri,finan_date
+	)values(
+		#{reimPerson},#{finanAmount},#{finanDescri},#{finanDate}
+	)
+</insert>
+<select id="getIncomeInPeriod" parameterType="java.lang.String" resultType="java.lang.Float">
+	select sum(finan_amount) 
+		from finance 
+	where 
+	finan_date BETWEEN #{startTime} and #{endTime} 
+	and finan_amount>=0
+</select>
+<select id="getProfitInPeriod" parameterType="java.lang.String" resultType="java.lang.Float">
+	select sum(finan_amount) 
+		from finance 
+	where 
+	finan_date BETWEEN #{startTime} and #{endTime} 
+</select>
+<select id="getOutcomeInPeriod" parameterType="java.lang.String" resultType="java.lang.Float">
+	select sum(finan_amount) from finance
+	where finan_amount&lt;0 and finan_date BETWEEN #{startTime} and #{endTime}
+</select>
+<select id="getIncomeFinance" parameterType="java.lang.String" resultType="entity.Finance">
+	select
+		finan_id as finanId,
+		reim_person as reimPerson,
+		finan_amount as finanAmount,
+		finan_descri as finanDescri,
+		finan_date as finanDate
+	from finance where finan_amount>=0 and finan_date BETWEEN #{startTime} and #{endTime}
+</select>
+<select id="getOutcomeFinance" parameterType="java.lang.String" resultType="entity.Finance">
+	select
+		finan_id as finanId,
+		reim_person as reimPerson,
+		finan_amount as finanAmount,
+		finan_descri as finanDescri,
+		finan_date as finanDate
+	from finance where finan_amount&lt;0 and finan_date BETWEEN #{startTime} and #{endTime}
+</select>
+<select id="getProfitFinance" parameterType="java.lang.String" resultType="entity.Finance">
+	select
+		finan_id as finanId,
+		reim_person as reimPerson,
+		finan_amount as finanAmount,
+		finan_descri as finanDescri,
+		finan_date as finanDate
+	from finance where finan_amount&lt;0 and finan_date BETWEEN #{startTime} and #{endTime}
+</select>
+</mapper>

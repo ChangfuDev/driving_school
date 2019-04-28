@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserLearnerMapper">
+	<select id="getLearners" resultType="entity.UserLearner">
+		select
+		learner_id as learnerId,
+		learn_status as learnStatus,
+		learner_name as learnerName,
+		learner_age as learnerAge,
+		learner_gender as learnerGender,
+		learner_birthday as learnerBirthday,
+		learner_contact as learnerContact,
+		learner_email as learnerEmail,
+		learner_icard as learnerIcard,
+		learner_wechat as learnerWechat,
+		learner_qq as learnerQq,
+		learner_address as learnerAddress,
+		present_subject as presentSubject,
+		claim_type as claimType,
+		begin_date as beginDate,
+		finish_date as finishDate
+		from user_learner
+	</select>
+	<select id="getLearnerById" parameterType="java.lang.Integer"
+		resultType="entity.UserLearner">
+		select
+		learner_id as learnerId,
+		learn_status as learnStatus,
+		learner_name as learnerName,
+		learner_age as learnerAge,
+		learner_gender as learnerGender,
+		learner_birthday as learnerBirthday,
+		learner_contact as learnerContact,
+		learner_email as learnerEmail,
+		learner_icard as learnerIcard,
+		learner_wechat as learnerWechat,
+		learner_qq as learnerQq,
+		learner_address as learnerAddress,
+		present_subject as presentSubject,
+		claim_type as claimType,
+		begin_date as beginDate,
+		finish_date as finishDate
+		from user_learner
+		where learner_id=${learnerId}
+	</select>
+	<update id="updateLearner" parameterType="entity.UserLearner">
+		update user_learner
+		set
+		learn_status =#{learnStatus},
+		learner_name =#{learnerName},
+		learner_age =#{learnerAge},
+		learner_gender =#{learnerGender},
+		learner_birthday =#{learnerBirthday},
+		learner_contact =#{learnerContact},
+		learner_email =#{learnerEmail},
+		learner_icard =#{learnerIcard},
+		learner_wechat =#{learnerWechat},
+		learner_qq =#{learnerQq},
+		learner_address =#{learnerAddress},
+		present_subject =#{presentSubject},
+		claim_type =#{claimType},
+		begin_date =#{beginDate},
+		finish_date =#{finishDate}
+		where
+		learner_id=#{learnerId}
+	</update>
+	<insert id="insertLearner" parameterType="entity.UserLearner">
+		insert into
+		user_learner(
+		learn_status,
+		learner_name,
+		learner_age,
+		learner_gender,
+		learner_birthday,
+		learner_contact,
+		learner_email,
+		learner_icard,
+		learner_wechat,
+		learner_qq,
+		learner_address,
+		present_subject,
+		claim_type,
+		begin_date,
+		finish_date
+		)
+		values(
+		#{learnStatus},#{learnerName},#{learnerAge},#{learnerGender},#{learnerBirthday},#{learnerContact},#{learnerEmail},#{learnerIcard},#{learnerWechat},#{learnerQq},#{learnerAddress},#{presentSubject},#{claimType},#{beginDate},#{finishDate}
+		)
+	</insert>
+	<insert id="insertEnroll" parameterType="entity.Enroll">
+		insert into enroll(
+		en_name,en_icard,en_sub,en_date
+		)values(
+		#{enName},#{enIcard},#{enSub},#{enDate}
+		)
+	</insert>
+	<select id="getAllEnroll" resultType="entity.Enroll">
+		select en_id as enId,
+			en_name as enName,
+			en_icard as enIcard,
+			en_sub as enSub,
+			en_date as enDate
+		from enroll
+	</select>
+</mapper>

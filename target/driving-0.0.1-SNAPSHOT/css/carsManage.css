@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+#homePageImg {
+	width: 30px;
+}
+
+#navALab {
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+}
+
+#navTitle {
+	line-height: 30px;
+	text-align: center;
+	width: 95%;
+	display: inline-block;
+	font-size: 28px;
+}
+
+#searchInput {
+	height: 50px;
+	width: 100%;
+	outline: none;
+	box-sizing: border-box;
+	font-size: 18px;
+}
+
+#searchImage {
+	height: 50px;
+}
+
+#searchALab {
+	display: inline-block;
+	height: 50px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	cursor: pointer;
+}
+
+.searchDiv {
+	width: 100%;
+	margin-top: 20px;
+	text-align: center;
+	display: block;
+}
+
+.searchDiv2 {
+	width: 20%;
+	display: inline-block;
+	position: relative;
+	padding: 0px;
+}
+
+.carsListDiv {
+	width: 100%;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.carsListDiv2 {
+	width: 50%;
+	background-color: #F9F9F9;
+	display: inline-block;
+	padding-top: 30px;
+	text-align: center;
+}
+
+.carsListDiv2 span {
+	font-size: 20px;
+}
+
+.carsListUl {
+	margin-top: 30px;
+	padding: 0px;
+	width: 100%;
+}
+
+.carsListLi {
+	width: 100%;
+	list-style: none;
+	margin-top:15px;
+}
+
+.carsListDiv2 span:hover {
+	font-size: 20px;
+	cursor: pointer;
+	background-color: #E6E6E6;
+}

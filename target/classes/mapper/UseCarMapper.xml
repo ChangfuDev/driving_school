@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UseCarMapper">
+	<select id="getCarUseById" parameterType="java.lang.Integer" resultType="entity.UseCar">
+		select 
+			use_id as useId,
+			coach_name as coachName,
+			user_coach.coach_id as coachId,
+			use_time as useTime,
+			car_id as carId
+		from use_car,user_coach
+		where use_car.coach_id=user_coach.coach_id and car_id=#{carId}
+	</select>
+	<select id="getCarUseNumById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*)
+			from use_car
+		where
+			car_id=#{carId}
+	</select>
+	<insert id="addNewCarUse" parameterType="entity.UseCar">
+		insert
+			into use_car(
+				car_id,
+				coach_id,
+				use_time
+			)
+		values(
+			#{carId},
+			#{coachId},
+			#{useTime}
+		)
+	</insert>
+</mapper>

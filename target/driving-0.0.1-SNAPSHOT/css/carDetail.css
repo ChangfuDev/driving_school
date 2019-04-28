@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+body{
+	padding:30px;
+}
+#detailH1{
+	width:100%;
+	text-align: center;
+}
+#homePageImg {
+	width: 10px;
+}
+#carDetailDiv{
+	width:100%;
+	text-align: center;
+}
+#carDetailDiv2{
+	width:70%;
+	background-color: #F9F9F9;
+	display: inline-block;
+}
+#carDetailTable{
+	width:100%;
+	border-collapse:collapse;
+	box-sizing: border-box;
+}
+td{
+	border:solid 1px;
+}
+th{
+	border:solid 1px;
+}
+td input{
+	display:block;
+	width:100%;
+	height:100%;
+}
+#carUseTable{
+	width:100%;
+	border-collapse: collapse;
+}
+#repairOrderTable{
+	width:100%;
+	border-collapse: collapse;
+}
+#addNewDiv{
+	margin-top:80px;
+	width:100%;
+}
+#addNewObjectsTable{
+	width:100%;
+}
+#addNewObjectsTable{
+	width:100%;
+	background-color: #EEEEEE;
+	margin-top:40px;
+	text-align: center;
+}

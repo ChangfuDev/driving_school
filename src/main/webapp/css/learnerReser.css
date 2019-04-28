@@ -1,0 +1,37 @@
+@charset "UTF-8";
+table{
+	width:100%;
+	margin-top:50px;
+	border-collapse: collapse;
+	font-size: 20px;
+}
+#homePageImg {
+	width: 30px;
+}
+
+#navALab {
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+}
+
+#navTitle {
+	line-height: 30px;
+	text-align: center;
+	width: 95%;
+	display: inline-block;
+	font-size: 28px;
+}
+td{
+	border:solid 1px;
+}
+th{
+	border:solid 1px;
+}
+.carReserTr:hover{
+	background-color: #DDDDDD;
+}
+input{
+	cursor:pointer;
+	font-size: 20px;
+}

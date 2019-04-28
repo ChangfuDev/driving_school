@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+table {
+	width: 100%;
+	height: 400px;
+}
+
+td {
+	width: 25%;
+	border: solid 1px;
+	position: relative;
+	cursor: pointer;
+}
+
+td:hover {
+	width: 25%;
+	border: solid 1px;
+	position: relative;
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+#homePageImg {
+	width: 30px;
+}
+
+#navALab {
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+}
+
+#navTitle {
+	line-height: 30px;
+	text-align: center;
+	width: 95%;
+	display: inline-block;
+	font-size: 28px;
+}
+
+td img {
+	width: 100%;
+}
+
+.fieldTitle {
+	position: absolute;
+	left: 110px;
+	top: 95px;
+	font-size: 50px;
+}
+
+p {
+	margin: 0px;
+}
+
+.fieldStatus {
+	position: absolute;
+	left: 169px;
+	top: 210px;
+	font-size:20px;
+	background-color: rgba(255,255,255,0.8);
+	border-radius: 2px;
+}

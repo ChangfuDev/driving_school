@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.CarManageMapper">
+	<select id="searchCars" resultType="entity.Car">
+		select
+			car_id as carId,
+			car_type as carType,
+			start_time as startTime
+		from cars
+			where
+			car_id ='${content}'
+			or car_type like '%${content}%'
+			or start_time like '%${content}%'
+	</select>
+	<select id="getCar" parameterType="java.lang.Integer" resultType="entity.Car">
+		select
+			car_id as carID,
+			car_type as carType,
+			start_time as startTime
+		from cars
+			where
+			car_id=#{carId}
+	</select>
+	<select id="getCarReservation" resultType="entity.CarReservation">
+		select
+			reser_id as reserId,
+			user_learner.learner_id as learnerId,
+			reser_field as reserField,
+			user_coach.coach_id as coachId,
+			reser_sub as reserSub,
+			reser_date as reserDate,
+			reser_contact as reserContact,
+			reser_email as reserEmail,
+			is_checked as isChecked,
+			learner_name as learnerName,
+			coach_name as coachName
+		from car_reservation,user_learner,user_coach
+			where user_learner.learner_id=car_reservation.learner_id and user_coach.coach_id=car_reservation.coach_id
+	</select>
+	<select id="getCarReserNumsById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) 
+			from car_reservation 
+		WHERE coach_id=(
+			select coach_id 
+				from car_reservation 
+			where reser_id=#{reserId})
+	</select>
+	<update id="updateCarReservationCheck" parameterType="java.lang.Integer">
+			update car_reservation
+			set is_checked=1
+			where reser_id=#{reserId}
+	</update>
+	<insert id="addNewCarReser" parameterType="entity.CarReservation">
+		insert into car_reservation(
+			learner_id,reser_field,coach_id,reser_sub,reser_date,reser_contact,reser_email,is_checked
+		)
+		values(
+			#{learnerId},#{reserField},#{coachId},#{reserSub},#{reserDate},#{reserContact},#{reserEmail},#{isChecked}
+		)
+	</insert>
+	<select id="getCarReservationById" parameterType="java.lang.Integer" resultType="entity.CarReservation">
+		select
+			reser_id as reserId,
+			user_learner.learner_id as learnerId,
+			reser_field as reserField,
+			user_coach.coach_id as coachId,
+			reser_sub as reserSub,
+			reser_date as reserDate,
+			reser_contact as reserContact,
+			reser_email as reserEmail,
+			is_checked as isChecked,
+			learner_name as learnerName,
+			coach_name as coachName
+		from car_reservation,user_learner,user_coach
+			where user_learner.learner_id=car_reservation.learner_id and user_coach.coach_id=car_reservation.coach_id and user_coach.coach_id=#{coachId} and is_checked=1
+	</select>
+	<select id="getCarsById" parameterType="java.lang.Integer" resultType="entity.Car">
+		select  distinct
+			cars.car_id as carId,
+			cars.car_type as carType,
+			cars.start_time as startTime
+		from cars,use_car
+			where
+		cars.car_id=use_car.car_id and coach_id=#{coachId}
+			order by cars.start_time desc LIMIT 5
+	</select>
+	<select id="getCars" resultType="entity.Car">
+		select
+			car_id as carId,
+			car_type as carType,
+			start_time as startTime
+		from cars
+	</select>
+	<delete id="deleteCarReser" parameterType="java.lang.Integer">
+		delete from car_reservation
+		where reser_id=#{reserId}
+	</delete>
+</mapper>
